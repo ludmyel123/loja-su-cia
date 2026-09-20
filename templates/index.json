@@ -1,8 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "height": 560,
         "eyebrow": "Begränsat lager",
         "heading": "Höstrea",
         "text": "Upptäck vår höstkollektion av skor — upp till 50% rabatt. Säkra dina favoriter innan de tar slut!",
@@ -18,7 +28,7 @@
           "settings": {
             "heading": "Fri frakt i Sverige",
             "text": "Vi skickar med PostNord — snabb och pålitlig leverans, alltid inkluderad.",
-            "icon_path": "<rect x=\"1\" y=\"7\" width=\"15\" height=\"10\"/><path d=\"M16 10h4l3 3v4h-7\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18.5\" cy=\"19\" r=\"2\"/>"
+            "icon_path": "<rect x=\"1\" y=\"7\" width=\"15\" height=\"10\"></rect><path d=\"M16 10h4l3 3v4h-7\"></path><circle cx=\"6\" cy=\"19\" r=\"2\"></circle><circle cx=\"18.5\" cy=\"19\" r=\"2\"></circle>"
           }
         },
         "support": {
@@ -26,7 +36,7 @@
           "settings": {
             "heading": "Kundtjänst 24/7",
             "text": "Vi finns alltid här för dig. Hör av dig när som helst.",
-            "icon_path": "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/>"
+            "icon_path": "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path>"
           }
         },
         "payment": {
@@ -34,15 +44,21 @@
           "settings": {
             "heading": "Trygg betalning",
             "text": "Betala tryggt med Klarna, Swish, kort eller Apple Pay.",
-            "icon_path": "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z\"/><path d=\"m9 12 2 2 4-4\"/>"
+            "icon_path": "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z\"></path><path d=\"m9 12 2 2 4-4\"></path>"
           }
         }
       },
-      "block_order": ["shipping", "support", "payment"]
+      "block_order": [
+        "shipping",
+        "support",
+        "payment"
+      ],
+      "settings": {}
     },
     "sneakers": {
       "type": "featured-collection",
       "settings": {
+        "collection": "loafers",
         "eyebrow": "Bästsäljare",
         "heading": "Sneakers",
         "button_label": "Se alla",
@@ -52,6 +68,7 @@
     "boots": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
         "eyebrow": "Nya favoriter",
         "heading": "Stövlar & sandaler",
         "button_label": "Se alla",
@@ -61,11 +78,37 @@
     "split": {
       "type": "split-banner",
       "blocks": {
-        "dam": { "type": "panel", "settings": { "heading": "Dam", "text": "Utforska vår damkollektion av skor.", "button_label": "Se mer" } },
-        "herr": { "type": "panel", "settings": { "heading": "Herr", "text": "Utforska vår herrkollektion av skor.", "button_label": "Se mer" } }
+        "dam": {
+          "type": "panel",
+          "settings": {
+            "heading": "Dam",
+            "text": "Utforska vår damkollektion av skor.",
+            "button_label": "Se mer",
+            "link": ""
+          }
+        },
+        "herr": {
+          "type": "panel",
+          "settings": {
+            "heading": "Herr",
+            "text": "Utforska vår herrkollektion av skor.",
+            "button_label": "Se mer",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["dam", "herr"]
+      "block_order": [
+        "dam",
+        "herr"
+      ],
+      "settings": {}
     }
   },
-  "order": ["hero", "usp", "sneakers", "boots", "split"]
+  "order": [
+    "hero",
+    "usp",
+    "sneakers",
+    "boots",
+    "split"
+  ]
 }
