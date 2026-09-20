@@ -1,0 +1,78 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Hoppa till innehåll"
+    },
+    "meta": {
+      "page": "Sida {{ page }}",
+      "tags": "Taggade \"{{ tags }}\""
+    },
+    "search": {
+      "placeholder": "Sök produkter...",
+      "submit": "Sök"
+    },
+    "icons": {
+      "account": "Mitt konto",
+      "search": "Sök",
+      "cart": "Varukorg",
+      "menu": "Meny"
+    },
+    "cart": {
+      "title": "Varukorg",
+      "empty": "Din varukorg är tom.",
+      "empty_sub": "Dags att hitta ditt nästa par.",
+      "empty_cta": "Fortsätt handla",
+      "subtotal": "Delsumma",
+      "checkout": "Gå till kassan",
+      "reserved_notice": "Din varukorg är reserverad i {{ time }} minuter!",
+      "priority_shipping_title": "Prioriterad frakt",
+      "priority_shipping_desc": "Din beställning packas med förtur, före övriga ordrar.",
+      "wrong_size": "Fel storlek? Vi skickar en annan",
+      "remove": "Ta bort",
+      "quantity": "Antal"
+    }
+  },
+  "newsletter": {
+    "heading": "Prenumerera på vårt nyhetsbrev",
+    "placeholder": "E-post",
+    "submit": "Prenumerera",
+    "success": "Tack! Du prenumererar nu."
+  },
+  "popup": {
+    "no_thanks": "Nej tack",
+    "email_placeholder": "Din e-post",
+    "submit": "HÄMTA MIN RABATT"
+  },
+  "product": {
+    "add_to_cart": "Lägg i varukorg",
+    "added_to_cart": "Tillagd",
+    "buy_now": "Köp nu",
+    "sold_out": "Slutsåld",
+    "unavailable": "Ej tillgänglig",
+    "choose_size": "— välj storlek",
+    "choose_size_warning": "Vänligen välj en storlek innan du lägger i varukorgen",
+    "size_guide": "Storleksguide",
+    "only_left_in_stock": "Endast {{ count }} kvar i lager",
+    "description": "Beskrivning",
+    "specifications": "Specifikationer",
+    "free_shipping": "Fri frakt",
+    "returns": "30 dagars öppet köp",
+    "color_label": "Färg",
+    "size_label": "Storlek (EU)",
+    "rating_based_on": "baserat på +{{ count }} recensioner",
+    "save_percent": "SPARA {{ percent }}%",
+    "related_heading": "Du kanske också gillar",
+    "reviews_heading": "Vad våra kunder säger",
+    "quantity": "Antal"
+  },
+  "header": {
+    "menu": "Meny",
+    "track_order": "Spåra order"
+  },
+  "footer": {
+    "quick_links": "Snabblänkar",
+    "contact": "Kontakt",
+    "mission": "Vårt uppdrag",
+    "rights_reserved": "Alla rättigheter förbehållna"
+  }
+}

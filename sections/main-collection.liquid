@@ -1,0 +1,45 @@
+<div class="wrap" style="padding-block:2.5rem;">
+  <div class="cat-head">
+    <div>
+      <div class="sub">{{ collection.products_count }} produkter</div>
+      <h1 class="serif" style="font-size:2rem;">{{ collection.title }}</h1>
+    </div>
+  </div>
+
+  {%- if collection.description != blank -%}
+    <div style="max-width:70ch;color:var(--ink-soft);margin-bottom:2rem;">{{ collection.description }}</div>
+  {%- endif -%}
+
+  {%- paginate collection.products by 24 -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="product-grid">
+        {%- for product in collection.products -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p style="color:var(--ink-soft);">Inga produkter i denna kollektion än.</p>
+    {%- endif -%}
+
+    {%- if paginate.pages > 1 -%}
+      <div style="display:flex; justify-content:center; gap:.6rem; margin-top:2.5rem;">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="btn outline" style="color:var(--ink);border-color:var(--line);">←</a>{%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="btn outline" style="color:var(--ink);border-color:var(--line);">{{ part.title }}</a>
+          {%- else -%}
+            <span class="btn" style="pointer-events:none;">{{ part.title }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn outline" style="color:var(--ink);border-color:var(--line);">→</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Kollektion",
+  "settings": []
+}
+{% endschema %}

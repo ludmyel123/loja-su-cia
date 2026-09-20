@@ -1,0 +1,70 @@
+<footer class="site">
+  <div class="wrap nl-band">
+    <div class="row">
+      <h2 class="serif">{{ 'newsletter.heading' | t }}</h2>
+      {%- form 'customer', id: 'FooterNewsletterForm' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p style="color:#fff;font-weight:600;">{{ 'newsletter.success' | t }}</p>
+        {%- else -%}
+          <div class="nl-form">
+            <input type="email" name="contact[email]" placeholder="{{ 'newsletter.placeholder' | t }}" required>
+            <button type="submit" class="btn light">{{ 'newsletter.submit' | t }}</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+
+  <div class="wrap footer-grid">
+    <div>
+      <h4>{{ 'footer.mission' | t }}</h4>
+      {%- if settings.footer_mission != blank -%}
+        {{ settings.footer_mission }}
+      {%- else -%}
+        <p style="color:#8f8574;">Lägg till er uppdragstext i Personalisera tema → Definitioner → Kontakt &amp; företag.</p>
+      {%- endif -%}
+    </div>
+    <div>
+      <h4>{{ 'footer.quick_links' | t }}</h4>
+      <ul class="footer-links">
+        {%- for policy in shop.policies -%}
+          <li><a href="{{ policy.url }}">{{ policy.title }}</a></li>
+        {%- endfor -%}
+        {%- for link in linklists.footer.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div>
+      <h4>{{ 'footer.contact' | t }}</h4>
+      <ul class="footer-links">
+        {%- if settings.contact_email != blank -%}<li><a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a></li>{%- endif -%}
+        {%- if settings.contact_phone != blank -%}<li><a href="tel:{{ settings.contact_phone | remove: ' ' }}">{{ settings.contact_phone }}</a></li>{%- endif -%}
+        {%- if settings.contact_address != blank -%}<li>{{ settings.contact_address }}</li>{%- endif -%}
+      </ul>
+      {%- if settings.social_instagram_link != blank or settings.social_facebook_link != blank or settings.social_tiktok_link != blank -%}
+        <div style="display:flex; gap:.8rem; margin-top:1rem;">
+          {%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}" aria-label="Instagram" style="color:#fff;">Instagram</a>{%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}<a href="{{ settings.social_facebook_link }}" aria-label="Facebook" style="color:#fff;">Facebook</a>{%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}<a href="{{ settings.social_tiktok_link }}" aria-label="TikTok" style="color:#fff;">TikTok</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ shop.name | upcase }} | {{ 'footer.rights_reserved' | t }}</span>
+    <span>
+      {%- if settings.org_number != blank -%}Org.nr {{ settings.org_number }} · {% endif -%}
+      Priser i SEK inkl. moms
+    </span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Sidfot",
+  "settings": []
+}
+{% endschema %}

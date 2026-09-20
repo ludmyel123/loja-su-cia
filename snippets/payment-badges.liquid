@@ -1,0 +1,18 @@
+{%- comment -%}
+  Selos de métodos de pagamento. Isto é apenas visual (para credibilidade) — os métodos
+  realmente aceites são geridos em Shopify Admin > Definições > Pagamentos, e o Shopify
+  mostra automaticamente os ícones certos no checkout real, independentemente destes selos.
+{%- endcomment -%}
+<div class="pay-badge-row">
+  <span class="pchip klarna"><span>Klarna</span></span>
+  <span class="pchip swish"><span>Swish</span></span>
+  <span class="pchip visa"><span>VISA</span></span>
+  <span class="pchip mastercard">
+    <svg width="30" height="17" viewBox="0 0 30 17" aria-hidden="true"><circle cx="11" cy="8.5" r="8" fill="#EB001B"/><circle cx="19" cy="8.5" r="8" fill="#F79E1B" style="mix-blend-mode:multiply"/></svg>
+  </span>
+  <span class="pchip applepay">
+    <svg width="13" height="15" viewBox="0 0 14 16" fill="#fff" aria-hidden="true"><path d="M9.5 4.2c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 2-.5 2.6-1.2Z"/><path d="M12.4 8.1c-.8-1-2-1.6-3.1-1.6-1.3 0-1.9.7-2.8.7-.9 0-1.7-.7-2.8-.7-1.4 0-2.9.8-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.3 2.9 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.3 1.2-2.5 1.2-2.6-.1 0-2.4-.9-2.4-3.6 0-2.3 1.9-3.3 2-3.4Z"/></svg>
+    <span>Pay</span>
+  </span>
+  <span class="pchip gpay"><span class="gdot" aria-hidden="true"></span><span>Pay</span></span>
+</div>

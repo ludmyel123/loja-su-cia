@@ -1,0 +1,54 @@
+<div class="story-hero" style="min-height:320px;">
+  <div class="ph tone-4 ph-bg" style="position:absolute;inset:0;border-radius:0;">
+    {%- if section.settings.image -%}
+      <img src="{{ section.settings.image | image_url: width: 1600 }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+    {%- else -%}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6"/></svg>
+      <span class="tag">Bild saknas</span>
+    {%- endif -%}
+  </div>
+  <div class="wrap">
+    {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+    <h1 class="serif">{{ section.settings.heading }}</h1>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="story-body">
+    {{ section.settings.body }}
+  </div>
+  {%- if section.settings.credit_name != blank -%}
+    <div class="story-credit">
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;" class="ph">
+        {%- if section.settings.credit_image -%}
+          <img src="{{ section.settings.credit_image | image_url: width: 100 }}" alt="" style="width:100%;height:100%;object-fit:cover;">
+        {%- endif -%}
+      </div>
+      <div><b>{{ section.settings.credit_name }}</b>{% if section.settings.credit_title != blank %} — {{ section.settings.credit_title }}{% endif %}</div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Vår historia",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Omslagsbild" },
+    { "type": "text", "id": "eyebrow", "label": "Liten text ovanför", "default": "Grundad i Falun, Dalarna" },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "Vår historia" },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Text",
+      "default": "<p>Historien om Urvéia börjar i ett litet skomakeri i utkanten av Falun, där kopparmalmen en gång färgade hela staden röd. År 2016 tog Lovisa [efternamn] över sin farfars gamla verkstad — tre rum, en symaskin från 60-talet och lådor fulla med läderrester. Farfar hade sytt stövlar åt gruvarbetarna i decennier, skor gjorda för att hålla genom kalla vintrar. Lovisa ärvde inte bara verktygen, utan tanken att ett par skor ska hålla i åratal, inte säsonger.</p><p>Det första året sydde hon för hand och sålde på Falu marknad varje lördag. Ryktet spred sig långsamt, men den som köpte ett par kom alltid tillbaka för ett till. Idag är vi fortfarande inte fler än en handfull — men varje par bär med sig samma envishet som fanns i farfars lådor: gör det ordentligt, eller gör det inte alls.</p>"
+    },
+    { "type": "header", "content": "Signatur (valfritt)" },
+    { "type": "image_picker", "id": "credit_image", "label": "Bild" },
+    { "type": "text", "id": "credit_name", "label": "Namn" },
+    { "type": "text", "id": "credit_title", "label": "Titel", "default": "Grundare" }
+  ],
+  "presets": [
+    { "name": "Vår historia" }
+  ]
+}
+{% endschema %}

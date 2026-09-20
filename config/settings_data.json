@@ -1,0 +1,41 @@
+{
+  "current": {
+    "logo_width": 150,
+    "color_bg": "#FFFFFF",
+    "color_surface": "#FFFFFF",
+    "color_surface_alt": "#F6F2EA",
+    "color_ink": "#1C1A17",
+    "color_ink_soft": "#5C554B",
+    "color_ink_faint": "#93897A",
+    "color_line": "#E6DDCB",
+    "color_line_soft": "#EFE7D8",
+    "color_gold": "#A17638",
+    "color_gold_soft": "#CBA467",
+    "color_gold_ink": "#6E5227",
+    "color_oxblood": "#7B1F2B",
+    "color_sale": "#C22B2B",
+    "color_sale_bg": "#FBEAEA",
+    "color_success": "#1E7A49",
+    "color_success_ink": "#155C37",
+    "color_success_bg": "#E4F3EA",
+    "color_focus": "#2461D9",
+    "font_heading": "playfair_display_n5",
+    "font_body": "inter_n4",
+    "cart_drawer_enable": true,
+    "free_shipping_threshold": 500,
+    "priority_shipping_enable": false,
+    "priority_shipping_variant_id": "",
+    "show_payment_badges": true,
+    "trust_shipping_text": "Fri frakt med PostNord",
+    "trust_returns_text": "30 dagars öppet köp",
+    "trust_origin_text": "Levererat från Sverige sedan 2016",
+    "contact_email": "",
+    "contact_phone": "",
+    "contact_address": "",
+    "org_number": "",
+    "footer_mission": ""
+  },
+  "presets": {
+    "Urvéia": {}
+  }
+}

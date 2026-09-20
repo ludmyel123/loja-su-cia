@@ -1,0 +1,53 @@
+<div class="wrap" style="padding-block:2.5rem;">
+  <h1 class="serif" style="font-size:2rem;margin-bottom:2rem;">{{ 'general.cart.title' | t }}</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="drawer-empty" style="padding:2rem 0;">
+      <p>{{ 'general.cart.empty' | t }} {{ 'general.cart.empty_sub' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn">{{ 'general.cart.empty_cta' | t }}</a>
+    </div>
+  {%- else -%}
+    {%- form 'cart', cart -%}
+      <div style="display:flex;flex-direction:column;gap:0;">
+        {%- for item in cart.items -%}
+          <div class="cart-line" style="align-items:center;">
+            <div class="ph" style="width:84px;height:100px;border-radius:3px;overflow:hidden;flex:none;">
+              {%- if item.image -%}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" style="width:100%;height:100%;object-fit:cover;">{%- endif -%}
+            </div>
+            <div class="info">
+              <a href="{{ item.url }}" class="n" style="text-decoration:none;color:inherit;">{{ item.product.title }}</a>
+              {%- if item.variant.title != 'Default Title' -%}<div class="v">{{ item.variant.title | replace: ' / ', ' · ' }}</div>{%- endif -%}
+              <div class="price-row">
+                {%- if item.original_price > item.final_price -%}<span class="old">{{ item.original_price | money }}</span>{%- endif -%}
+                <span class="now">{{ item.final_price | money }}</span>
+              </div>
+              <div style="margin-top:.5rem;">
+                <label style="font-size:.78rem;color:var(--ink-soft);">{{ 'general.cart.quantity' | t }}
+                  <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" style="width:60px;margin-left:.4rem;padding:.3rem;border:1px solid var(--line);border-radius:3px;">
+                </label>
+              </div>
+            </div>
+            <div style="font-weight:700;">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="drawer-foot" style="border:none;padding:1.5rem 0;max-width:420px;margin-left:auto;">
+        <div class="subtotal-row">
+          <span class="l">{{ 'general.cart.subtotal' | t }}</span>
+          <span class="v">{{ cart.total_price | money }}</span>
+        </div>
+        <button type="submit" name="update" class="btn" style="width:100%;margin-bottom:.8rem;background:var(--surface);color:var(--ink);border-color:var(--line);">Uppdatera varukorg</button>
+        <button type="submit" name="checkout" class="btn success block">{{ 'general.cart.checkout' | t }}</button>
+        {%- if settings.show_payment_badges -%}{% render 'payment-badges' %}{%- endif -%}
+      </div>
+    {%- endform -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Varukorgssida",
+  "settings": []
+}
+{% endschema %}

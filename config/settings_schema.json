@@ -1,0 +1,136 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Urvéia",
+    "theme_version": "1.0.0",
+    "theme_author": "Urvéia",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Logótipo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logótipo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Largura do logótipo",
+        "min": 80,
+        "max": 260,
+        "step": 10,
+        "unit": "px",
+        "default": 150
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon (32x32px)"
+      }
+    ]
+  },
+  {
+    "name": "Cores",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Base"
+      },
+      { "type": "color", "id": "color_bg", "label": "Fundo da página", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_surface", "label": "Superfície (cartões, header)", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_surface_alt", "label": "Superfície alternativa", "default": "#F6F2EA" },
+      { "type": "color", "id": "color_ink", "label": "Texto principal", "default": "#1C1A17" },
+      { "type": "color", "id": "color_ink_soft", "label": "Texto secundário", "default": "#5C554B" },
+      { "type": "color", "id": "color_ink_faint", "label": "Texto ténue", "default": "#93897A" },
+      { "type": "color", "id": "color_line", "label": "Linhas/contornos", "default": "#E6DDCB" },
+      { "type": "color", "id": "color_line_soft", "label": "Linhas suaves", "default": "#EFE7D8" },
+      {
+        "type": "header",
+        "content": "Marca"
+      },
+      { "type": "color", "id": "color_gold", "label": "Dourado (acentos)", "default": "#A17638" },
+      { "type": "color", "id": "color_gold_soft", "label": "Dourado claro", "default": "#CBA467" },
+      { "type": "color", "id": "color_gold_ink", "label": "Dourado escuro (links)", "default": "#6E5227" },
+      { "type": "color", "id": "color_oxblood", "label": "Bordô (faixa de saldos)", "default": "#7B1F2B" },
+      {
+        "type": "header",
+        "content": "Estado"
+      },
+      { "type": "color", "id": "color_sale", "label": "Preço promocional", "default": "#C22B2B" },
+      { "type": "color", "id": "color_sale_bg", "label": "Fundo de urgência/saldos", "default": "#FBEAEA" },
+      { "type": "color", "id": "color_success", "label": "Sucesso (botão comprar)", "default": "#1E7A49" },
+      { "type": "color", "id": "color_success_ink", "label": "Sucesso (texto)", "default": "#155C37" },
+      { "type": "color", "id": "color_success_bg", "label": "Sucesso (fundo)", "default": "#E4F3EA" },
+      { "type": "color", "id": "color_focus", "label": "Foco (acessibilidade)", "default": "#2461D9" }
+    ]
+  },
+  {
+    "name": "Tipografia",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Fonte dos títulos",
+        "default": "playfair_display_n5"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Fonte do corpo de texto",
+        "default": "inter_n4"
+      }
+    ]
+  },
+  {
+    "name": "Carrinho",
+    "settings": [
+      { "type": "checkbox", "id": "cart_drawer_enable", "label": "Usar carrinho lateral (drawer)", "default": true, "info": "Se desativado, o cliente é enviado para a página /cart ao adicionar um produto." },
+      { "type": "number", "id": "free_shipping_threshold", "label": "Valor para frete grátis (SEK)", "default": 500 },
+      {
+        "type": "checkbox",
+        "id": "priority_shipping_enable",
+        "label": "Oferecer envio prioritário no carrinho",
+        "default": false,
+        "info": "Só ativa depois de criares o produto abaixo — sem ele, o upsell não é cobrado a sério."
+      },
+      {
+        "type": "text",
+        "id": "priority_shipping_variant_id",
+        "label": "ID da variante \"Envio prioritário\"",
+        "info": "Cria um produto real em Admin > Produtos (ex: \"Prioriterad frakt\", 29 kr, sem envio físico) e cola aqui o ID da sua variante. Sem isto, o interruptor não adiciona nada de real ao carrinho."
+      }
+    ]
+  },
+  {
+    "name": "Kontakt & företag",
+    "settings": [
+      { "type": "header", "content": "Visas i sidfoten — fyll i med era riktiga uppgifter" },
+      { "type": "text", "id": "contact_email", "label": "E-post" },
+      { "type": "text", "id": "contact_phone", "label": "Telefon" },
+      { "type": "text", "id": "contact_address", "label": "Adress" },
+      { "type": "text", "id": "org_number", "label": "Org.nr", "info": "Krävs enligt svensk lag för e-handelsföretag." },
+      { "type": "richtext", "id": "footer_mission", "label": "Uppdragstext i sidfoten" }
+    ]
+  },
+  {
+    "name": "Redes sociais",
+    "settings": [
+      { "type": "header", "content": "Links (opcionais — deixa vazio para ocultar o ícone)" },
+      { "type": "url", "id": "social_instagram_link", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook_link", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok_link", "label": "TikTok" }
+    ]
+  },
+  {
+    "name": "Pagamentos e confiança",
+    "settings": [
+      { "type": "checkbox", "id": "show_payment_badges", "label": "Mostrar selos de métodos de pagamento", "default": true },
+      { "type": "text", "id": "trust_shipping_text", "label": "Selo de confiança 1", "default": "Fri frakt med PostNord" },
+      { "type": "text", "id": "trust_returns_text", "label": "Selo de confiança 2", "default": "30 dagars öppet köp" },
+      { "type": "text", "id": "trust_origin_text", "label": "Selo de confiança 3", "default": "Levererat från Sverige sedan 2016" }
+    ]
+  }
+]

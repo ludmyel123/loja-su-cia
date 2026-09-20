@@ -1,0 +1,13 @@
+{%- if settings.cart_drawer_enable -%}
+<div class="drawer-backdrop" id="CartDrawerBackdrop"></div>
+<div class="drawer" id="CartDrawer" role="dialog" aria-modal="true" aria-label="{{ 'general.cart.title' | t }}">
+  {%- render 'cart-drawer-content' -%}
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Varukorg (sidopanel)",
+  "settings": []
+}
+{% endschema %}

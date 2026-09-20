@@ -1,0 +1,74 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+-%}
+
+<header class="site" id="SiteHeader">
+  <div class="wrap nav-row">
+    <div class="nav-left">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="{{ 'header.menu' | t }}" aria-expanded="false" aria-controls="MobileNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <nav class="primary" aria-label="{{ 'header.menu' | t }}">
+        {%- for link in menu.links -%}
+          <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endfor -%}
+      </nav>
+    </div>
+
+    <a href="{{ routes.root_url }}" class="logo serif" id="logoHome">
+      {%- if settings.logo -%}
+        <img src="{{ settings.logo | image_url: width: settings.logo_width | times: 2 }}" alt="{{ shop.name }}" width="{{ settings.logo_width }}" style="width:{{ settings.logo_width }}px; height:auto;">
+      {%- else -%}
+        {{ shop.name }}
+      {%- endif -%}
+    </a>
+
+    <div class="nav-icons">
+      <a href="{{ routes.account_url }}" class="icon-btn" aria-label="{{ 'general.icons.account' | t }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6"/></svg>
+      </a>
+      <button class="icon-btn" id="searchToggle" aria-label="{{ 'general.icons.search' | t }}" aria-controls="HeaderSearch" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+      </button>
+      <button class="icon-btn" id="cartToggle" aria-label="{{ 'general.icons.cart' | t }}" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="CartCount" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-search" id="HeaderSearch" hidden>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="wrap header-search-form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+      <input type="hidden" name="type" value="product">
+      <button type="submit">{{ 'general.search.submit' | t }}</button>
+    </form>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="MobileNav" hidden aria-label="{{ 'header.menu' | t }}">
+  <div class="mobile-nav-head">
+    <span class="logo serif" style="font-size:1.05rem;">{{ shop.name }}</span>
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="{{ 'general.accessibility.skip_to_content' | t }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+  {%- for link in menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+</nav>
+<div class="drawer-backdrop" id="MobileNavBackdrop" hidden></div>
+
+{% schema %}
+{
+  "name": "Sidhuvud",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Meny",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

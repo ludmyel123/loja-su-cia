@@ -1,0 +1,29 @@
+{%- comment -%}
+  Renderizado inicialmente vazio; o theme.js busca este endpoint via fetch e substitui o
+  conteúdo (padrão oficial da API de recomendações de produtos do Shopify).
+{%- endcomment -%}
+<div
+  id="ProductRecommendations-{{ section.id }}"
+  data-product-recommendations
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}&intent=related"
+>
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <section class="related">
+      <h2 class="serif" style="margin-bottom:1.2rem;">{{ 'product.related_heading' | t }}</h2>
+      <div class="product-grid">
+        {%- for product in recommendations.products -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Relaterade produkter",
+  "settings": [
+    { "type": "range", "id": "products_to_show", "label": "Antal produkter", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ]
+}
+{% endschema %}

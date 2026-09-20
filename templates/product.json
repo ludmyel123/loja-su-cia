@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "title": "Fri frakt",
+            "content": "<p>Alla beställningar inom Sverige skickas fritt med PostNord, leveranstid 2–4 arbetsdagar.</p>"
+          }
+        },
+        "returns": {
+          "type": "accordion",
+          "settings": {
+            "title": "30 dagars öppet köp",
+            "content": "<p>Vi garanterar 30 dagars öppet köp utan krångel. Passar storleken inte? Vi skickar en annan kostnadsfritt.</p>"
+          }
+        }
+      },
+      "block_order": ["shipping", "returns"],
+      "settings": {
+        "show_urgency_box": true,
+        "urgency_heading": "HÖSTREA UPP TILL −80%",
+        "urgency_text": "Efterfrågan har varit stor och lagret krymper. Så länge \"Lägg i varukorg\" är aktiv kan du fortfarande handla.",
+        "urgency_combo_1": "🛍️ Lägg till 2 par → 10% extra rabatt",
+        "urgency_combo_2": "Lägg till 3 par → 15% extra rabatt",
+        "social_proof_text": ""
+      }
+    }
+  },
+  "order": ["main"]
+}

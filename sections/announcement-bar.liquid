@@ -1,0 +1,20 @@
+{%- if section.settings.announcement_enable -%}
+  {%- if section.settings.announcement_link != blank -%}
+    <a href="{{ section.settings.announcement_link }}" class="announce" style="display:block;text-decoration:none;">
+      {{ section.settings.announcement_text }}
+    </a>
+  {%- else -%}
+    <div class="announce">{{ section.settings.announcement_text }}</div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Anmälningsfält",
+  "settings": [
+    { "type": "checkbox", "id": "announcement_enable", "label": "Visa fältet", "default": true },
+    { "type": "text", "id": "announcement_text", "label": "Text", "default": "HÖSTREA UPP TILL −50% · FRI FRAKT ÖVER 500 KR" },
+    { "type": "url", "id": "announcement_link", "label": "Länk (valfritt)" }
+  ]
+}
+{% endschema %}

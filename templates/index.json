@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Begränsat lager",
+        "heading": "Höstrea",
+        "text": "Upptäck vår höstkollektion av skor — upp till 50% rabatt. Säkra dina favoriter innan de tar slut!",
+        "button_label": "Läs mer",
+        "button_link": ""
+      }
+    },
+    "usp": {
+      "type": "usp-strip",
+      "blocks": {
+        "shipping": {
+          "type": "item",
+          "settings": {
+            "heading": "Fri frakt i Sverige",
+            "text": "Vi skickar med PostNord — snabb och pålitlig leverans, alltid inkluderad.",
+            "icon_path": "<rect x=\"1\" y=\"7\" width=\"15\" height=\"10\"/><path d=\"M16 10h4l3 3v4h-7\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18.5\" cy=\"19\" r=\"2\"/>"
+          }
+        },
+        "support": {
+          "type": "item",
+          "settings": {
+            "heading": "Kundtjänst 24/7",
+            "text": "Vi finns alltid här för dig. Hör av dig när som helst.",
+            "icon_path": "<path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/>"
+          }
+        },
+        "payment": {
+          "type": "item",
+          "settings": {
+            "heading": "Trygg betalning",
+            "text": "Betala tryggt med Klarna, Swish, kort eller Apple Pay.",
+            "icon_path": "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z\"/><path d=\"m9 12 2 2 4-4\"/>"
+          }
+        }
+      },
+      "block_order": ["shipping", "support", "payment"]
+    },
+    "sneakers": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bästsäljare",
+        "heading": "Sneakers",
+        "button_label": "Se alla",
+        "products_to_show": 4
+      }
+    },
+    "boots": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Nya favoriter",
+        "heading": "Stövlar & sandaler",
+        "button_label": "Se alla",
+        "products_to_show": 4
+      }
+    },
+    "split": {
+      "type": "split-banner",
+      "blocks": {
+        "dam": { "type": "panel", "settings": { "heading": "Dam", "text": "Utforska vår damkollektion av skor.", "button_label": "Se mer" } },
+        "herr": { "type": "panel", "settings": { "heading": "Herr", "text": "Utforska vår herrkollektion av skor.", "button_label": "Se mer" } }
+      },
+      "block_order": ["dam", "herr"]
+    }
+  },
+  "order": ["hero", "usp", "sneakers", "boots", "split"]
+}

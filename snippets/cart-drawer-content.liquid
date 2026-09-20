@@ -1,0 +1,83 @@
+{%- comment -%}
+  Conteúdo do carrinho — isolado num snippet para poder ser respondido tanto no
+  carregamento inicial da página como nas respostas AJAX de /cart/add.js e /cart/change.js
+  (Section Rendering API do Shopify), sem duplicar código.
+{%- endcomment -%}
+<div class="drawer-head">
+  <h2>{{ 'general.cart.title' | t }} ({{ cart.item_count }})</h2>
+  <button type="button" class="drawer-close" id="CartDrawerClose" aria-label="Stäng">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+  </button>
+</div>
+
+{%- if cart.item_count == 0 -%}
+  <div class="drawer-body">
+    <div class="drawer-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <p>{{ 'general.cart.empty' | t }}<br>{{ 'general.cart.empty_sub' | t }}</p>
+      <button type="button" class="btn" id="CartDrawerContinue">{{ 'general.cart.empty_cta' | t }}</button>
+    </div>
+  </div>
+{%- else -%}
+  <div class="drawer-body">
+    <div>
+      {%- for item in cart.items -%}
+        {%- unless item.variant_id == settings.priority_shipping_variant_id -%}
+          <div class="cart-line" data-cart-line data-key="{{ item.key }}">
+            <div class="ph" style="width:74px;height:88px;border-radius:3px;overflow:hidden;flex:none;">
+              {%- if item.image -%}
+                <img src="{{ item.image | image_url: width: 150 }}" alt="{{ item.title | escape }}" style="width:100%;height:100%;object-fit:cover;">
+              {%- endif -%}
+            </div>
+            <div class="info">
+              <a href="{{ item.url }}" class="n" style="text-decoration:none;color:inherit;">{{ item.product.title }}</a>
+              {%- if item.variant.title != 'Default Title' -%}<div class="v">{{ item.variant.title | replace: ' / ', ' · ' }}</div>{%- endif -%}
+              <div class="price-row">
+                {%- if item.original_price > item.final_price -%}
+                  <span class="old">{{ item.original_price | money }}</span>
+                {%- endif -%}
+                <span class="now">{{ item.final_price | money }}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:.8rem; margin-top:.5rem;">
+                <div class="qty-stepper">
+                  <button type="button" data-cart-qty-minus data-key="{{ item.key }}" aria-label="Minska antal">−</button>
+                  <span data-cart-qty>{{ item.quantity }}</span>
+                  <button type="button" data-cart-qty-plus data-key="{{ item.key }}" aria-label="Öka antal">+</button>
+                </div>
+                <button type="button" class="swap-link" data-cart-remove data-key="{{ item.key }}" style="color:var(--ink-faint);">{{ 'general.cart.remove' | t }}</button>
+              </div>
+              <a href="{{ shop.url }}/pages/kontakt" class="swap-link">{{ 'general.cart.wrong_size' | t }}</a>
+            </div>
+          </div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if settings.priority_shipping_enable and settings.priority_shipping_variant_id != blank -%}
+      {%- assign has_priority = false -%}
+      {%- for item in cart.items -%}
+        {%- if item.variant_id == settings.priority_shipping_variant_id -%}{%- assign has_priority = true -%}{%- endif -%}
+      {%- endfor -%}
+      <div class="upsell-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg>
+        <div>
+          <div class="t">{{ 'general.cart.priority_shipping_title' | t }}</div>
+          <div class="d">{{ 'general.cart.priority_shipping_desc' | t }}</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="PriorityShippingToggle" data-priority-shipping-variant="{{ settings.priority_shipping_variant_id }}" {% if has_priority %}checked{% endif %}>
+          <span class="slider-toggle"></span>
+        </label>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="drawer-foot">
+    <div class="subtotal-row">
+      <span class="l">{{ 'general.cart.subtotal' | t }}</span>
+      <span class="v" data-cart-subtotal>{{ cart.total_price | money }}</span>
+    </div>
+    <a href="/checkout" class="btn success block">{{ 'general.cart.checkout' | t }}</a>
+    {%- if settings.show_payment_badges -%}{% render 'payment-badges' %}{%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,39 @@
+<section class="usp-strip">
+  <div class="wrap usp-grid">
+    {%- for block in section.blocks -%}
+      <div class="usp-item" {{ block.shopify_attributes }}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">{{ block.settings.icon_path }}</svg>
+        <h3>{{ block.settings.heading }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Förtroenderad",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Punkt",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Rubrik", "default": "Fri frakt i Sverige" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Vi skickar med PostNord — snabb och pålitlig leverans." },
+        { "type": "html", "id": "icon_path", "label": "SVG-ikon (avancerat)", "default": "<rect x=\"1\" y=\"7\" width=\"15\" height=\"10\"/><path d=\"M16 10h4l3 3v4h-7\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18.5\" cy=\"19\" r=\"2\"/>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Förtroenderad",
+      "blocks": [
+        { "type": "item", "settings": { "heading": "Fri frakt i Sverige", "text": "Vi skickar med PostNord — snabb och pålitlig leverans, alltid inkluderad." } },
+        { "type": "item", "settings": { "heading": "Kundtjänst 24/7", "text": "Vi finns alltid här för dig." } },
+        { "type": "item", "settings": { "heading": "Trygg betalning", "text": "Betala tryggt med Klarna, Swish, kort eller Apple Pay.", "icon_path": "<path d=\"M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z\"/><path d=\"m9 12 2 2 4-4\"/>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

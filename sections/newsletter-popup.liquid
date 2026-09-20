@@ -1,0 +1,48 @@
+{%- if section.settings.enable -%}
+<div class="overlay-bg" id="NewsletterPopup" data-popup-delay="{{ section.settings.delay_ms }}" hidden>
+  <div class="popup">
+    <button class="popup-close" id="popupClose" aria-label="{{ 'popup.no_thanks' | t }}">✕</button>
+    <div class="ph tone-1">
+      {%- if section.settings.image -%}
+        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+      {%- else -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2.5 15.5c0-1.2.7-2 1.8-2.4L9 11l4.3-3.3c.9-.7 2-1 3.1-.7l3 .8c1 .3 1.8 1 2.1 2l.3 1c.3.9 1 1.6 1.9 1.8.9.2 1.3 1.3.7 2l-.6.7c-.5.6-1.3.9-2 .9H4.3c-1 0-1.8-.8-1.8-1.7Z"/><path d="M2.3 17.2h19.4"/></svg>
+        <span class="tag">Bild</span>
+      {%- endif -%}
+    </div>
+    <div class="popup-body">
+      <h2 class="serif">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+      {%- if section.settings.body_text != blank -%}<p>{{ section.settings.body_text }}</p>{%- endif -%}
+
+      {%- form 'customer', id: 'PopupNewsletterForm' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p data-form-success style="color:var(--success-ink);font-weight:600;">{{ 'newsletter.success' | t }}</p>
+        {%- else -%}
+          <div style="display:flex; flex-direction:column; gap:.8rem; margin-top:.4rem;">
+            <input type="email" name="contact[email]" placeholder="{{ 'popup.email_placeholder' | t }}" required>
+            <button type="submit" class="btn block">{{ 'popup.submit' | t }}</button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+
+      <button class="skip" id="popupSkip">{{ 'popup.no_thanks' | t }}</button>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Rabattpopup",
+  "settings": [
+    { "type": "checkbox", "id": "enable", "label": "Aktivera popup", "default": true },
+    { "type": "text", "id": "heading", "label": "Rubrik", "default": "FÅ 10% RABATT" },
+    { "type": "text", "id": "subheading", "label": "Underrubrik", "default": "På din första beställning!" },
+    { "type": "textarea", "id": "body_text", "label": "Extra text (valfritt)" },
+    { "type": "image_picker", "id": "image", "label": "Bild" },
+    { "type": "number", "id": "delay_ms", "label": "Fördröjning innan popupen visas (ms)", "default": 1500 }
+  ]
+}
+{% endschema %}
