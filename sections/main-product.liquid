@@ -141,7 +141,7 @@
                 <button type="button" class="size-chip {% unless size_available %}disabled{% endunless %}"
                   data-option-value data-option-index="{{ size_option_index | minus: 1 }}" data-value="{{ value | escape }}"
                   {% unless size_available %}disabled aria-disabled="true"{% endunless %}
-                  title="{% if size_available %}EU {{ value }}{% else %}Slut i lager{% endif %}">{{ value }}</button>
+                  title="{% if size_available %}{{ value }}{% else %}Slut i lager{% endif %}">{{ value }}</button>
               {%- endfor -%}
             </div>
             <div class="size-warning" data-size-warning hidden>⚠ {{ 'product.choose_size_warning' | t }}</div>

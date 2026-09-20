@@ -58,7 +58,7 @@
     "free_shipping": "Fri frakt",
     "returns": "30 dagars öppet köp",
     "color_label": "Färg",
-    "size_label": "Storlek (EU)",
+    "size_label": "Storlek",
     "rating_based_on": "baserat på +{{ count }} recensioner",
     "save_percent": "SPARA {{ percent }}%",
     "related_heading": "Du kanske också gillar",

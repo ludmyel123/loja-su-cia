@@ -183,7 +183,7 @@
       });
 
       if (selectedSizeLabel && sizeOptionIndex !== null && sizeTouched && selected[sizeOptionIndex]) {
-        selectedSizeLabel.textContent = "EU " + selected[sizeOptionIndex];
+        selectedSizeLabel.textContent = selected[sizeOptionIndex];
       }
       if (selectedColorLabel && colorOptionIndex !== null && selected[colorOptionIndex]) {
         selectedColorLabel.textContent = selected[colorOptionIndex];
