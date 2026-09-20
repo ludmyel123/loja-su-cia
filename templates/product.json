@@ -1,5 +1,11 @@
 {
   "sections": {
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "products_to_show": 4
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -29,5 +35,5 @@
       }
     }
   },
-  "order": ["main"]
+  "order": ["main", "recommendations"]
 }
