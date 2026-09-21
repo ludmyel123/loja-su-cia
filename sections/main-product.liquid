@@ -1,14 +1,18 @@
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
   assign size_option_index = null
+  assign size_option_zidx = null
   assign color_option_index = null
+  assign color_option_zidx = null
   for option in product.options_with_values
     assign name_down = option.name | downcase
     if name_down contains 'storlek' or name_down contains 'size' or name_down contains 'stl'
       assign size_option_index = option.position
+      assign size_option_zidx = forloop.index0
     endif
     if name_down contains 'färg' or name_down contains 'farg' or name_down contains 'color' or name_down contains 'colour'
       assign color_option_index = option.position
+      assign color_option_zidx = forloop.index0
     endif
   endfor
 -%}
@@ -95,19 +99,19 @@
         <input type="hidden" name="id" value="{{ current_variant.id }}" id="ProductVariantId-{{ section.id }}">
 
         {%- if color_option_index -%}
-          {%- assign color_option = product.options_with_values[color_option_index | minus: 1] -%}
-          <div class="field-label">{{ 'product.color_label' | t }} <span class="val" data-selected-color>{{ current_variant.options[color_option_index | minus: 1] }}</span></div>
-          <div class="swatches" data-color-swatches data-option-index="{{ color_option_index | minus: 1 }}">
+          {%- assign color_option = product.options_with_values[color_option_zidx] -%}
+          <div class="field-label">{{ 'product.color_label' | t }} <span class="val" data-selected-color>{{ current_variant.options[color_option_zidx] }}</span></div>
+          <div class="swatches" data-color-swatches data-option-index="{{ color_option_zidx }}">
             {%- for value in color_option.values -%}
               {%- assign swatch_variant = current_variant -%}
               {%- for v in product.variants -%}
-                {%- if v.options[color_option_index | minus: 1] == value -%}
+                {%- if v.options[color_option_zidx] == value -%}
                   {%- assign swatch_variant = v -%}
                   {%- break -%}
                 {%- endif -%}
               {%- endfor -%}
-              <button type="button" class="swatch {% if current_variant.options[color_option_index | minus: 1] == value %}active{% endif %}"
-                data-option-value data-option-index="{{ color_option_index | minus: 1 }}" data-value="{{ value | escape }}" title="{{ value }}">
+              <button type="button" class="swatch {% if current_variant.options[color_option_zidx] == value %}active{% endif %}"
+                data-option-value data-option-index="{{ color_option_zidx }}" data-value="{{ value | escape }}" title="{{ value }}">
                 <span class="ph" style="width:100%;height:100%;">
                   {%- if swatch_variant.featured_image -%}
                     <img src="{{ swatch_variant.featured_image | image_url: width: 100 }}" alt="{{ value }}" style="width:100%;height:100%;object-fit:cover;">
@@ -121,8 +125,8 @@
         {%- endif -%}
 
         {%- if size_option_index -%}
-          {%- assign size_option = product.options_with_values[size_option_index | minus: 1] -%}
-          <div class="size-block" data-option-index="{{ size_option_index | minus: 1 }}">
+          {%- assign size_option = product.options_with_values[size_option_zidx] -%}
+          <div class="size-block" data-option-index="{{ size_option_zidx }}">
             <div class="field-label" style="justify-content:space-between;">
               <span>{{ 'product.size_label' | t }} <span class="val" data-selected-size>{{ 'product.choose_size' | t }}</span></span>
               {%- if section.settings.size_guide_url != blank -%}
@@ -133,13 +137,13 @@
               {%- for value in size_option.values -%}
                 {%- assign size_available = false -%}
                 {%- for v in product.variants -%}
-                  {%- if v.options[size_option_index | minus: 1] == value and v.available -%}
+                  {%- if v.options[size_option_zidx] == value and v.available -%}
                     {%- assign size_available = true -%}
                     {%- break -%}
                   {%- endif -%}
                 {%- endfor -%}
                 <button type="button" class="size-chip {% unless size_available %}disabled{% endunless %}"
-                  data-option-value data-option-index="{{ size_option_index | minus: 1 }}" data-value="{{ value | escape }}"
+                  data-option-value data-option-index="{{ size_option_zidx }}" data-value="{{ value | escape }}"
                   {% unless size_available %}disabled aria-disabled="true"{% endunless %}
                   title="{% if size_available %}{{ value }}{% else %}Slut i lager{% endif %}">{{ value }}</button>
               {%- endfor -%}
@@ -150,12 +154,13 @@
 
         {%- comment -%} Övriga optioner (t.ex. bredd) renderas som enkla knappar {%- endcomment -%}
         {%- for option in product.options_with_values -%}
+          {%- assign option_zidx = forloop.index0 -%}
           {%- unless option.position == size_option_index or option.position == color_option_index -%}
-            <div class="field-label">{{ option.name }} <span class="val" data-selected-option="{{ option.position | minus: 1 }}">{{ current_variant.options[option.position | minus: 1] }}</span></div>
+            <div class="field-label">{{ option.name }} <span class="val" data-selected-option="{{ option_zidx }}">{{ current_variant.options[option_zidx] }}</span></div>
             <div class="swatches">
               {%- for value in option.values -%}
-                <button type="button" class="size-chip {% if current_variant.options[option.position | minus: 1] == value %}active{% endif %}"
-                  data-option-value data-option-index="{{ option.position | minus: 1 }}" data-value="{{ value | escape }}">{{ value }}</button>
+                <button type="button" class="size-chip {% if current_variant.options[option_zidx] == value %}active{% endif %}"
+                  data-option-value data-option-index="{{ option_zidx }}" data-value="{{ value | escape }}">{{ value }}</button>
               {%- endfor -%}
             </div>
           {%- endunless -%}
